@@ -1,18 +1,15 @@
 let cartoons = ["Steven Universe", "My Little Pony", "Adventure Time", "Over the Garden Wall"];
 
-
-
-
 function showCartoons() {
 
     let cartoon = $(this).attr("data-name");
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=T3mGsTKjspw6b56dhIaTFMeJe9wCcGu3&limit=5";
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + cartoon + "&api_key=T3mGsTKjspw6b56dhIaTFMeJe9wCcGu3";
 
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        $("#image-container").append(response)
+        $(".image-container").append(response)
         console.log(response)
     });
 }
@@ -21,7 +18,7 @@ function renderButtons() {
 
     // Deletes the movies prior to adding new movies
     // (this is necessary otherwise you will have repeat buttons)
-    $("#button-container").empty();
+    $(".button-container").empty();
     // Loops through the array of movies
     for (var i = 0; i < cartoons.length; i++) {
 
@@ -29,13 +26,13 @@ function renderButtons() {
         // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
         let newButton = $("<button>");
         // Adds a class of movie to our button
-        newButton.addClass("cartoon");
+        newButton.addClass("cartoon btn");
         // Added a data-attribute
         newButton.attr("data-name", cartoons[i]);
         // Provided the initial button text
         newButton.text(cartoons[i]);
         // Added the button to the buttons-view div
-        $("#button-container").append(newButton);
+        $(".button-container").append(newButton);
     }
 }
 

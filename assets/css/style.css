@@ -4,7 +4,7 @@
 
 .button-container {
     border: 1px solid black;
-    background-color: teal;
+    
 }
 
 .image-container {
@@ -15,4 +15,11 @@
 .input-container {
     border: 1px solid black;
     background-color: yellow;
+}
+
+button {
+    border-radius: 2px;
+    margin: 0 2px;
+    background-color: teal;
+    color: white;
 }
