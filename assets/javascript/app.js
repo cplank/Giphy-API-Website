@@ -13,24 +13,42 @@ function showCartoons() {
         let giphy = response.data
         for (let i = 0; i < giphy.length; i++) {
             let imageRating = giphy[i].rating
-            let imageUrl = giphy[i].images.fixed_height_still.url
-            let stillUrl = giphy[i].images.fixed_height_still.url
-            let animateUrl = giphy[i].images.fixed_width.url
+            let imageUrl = giphy[i].images.original_still.url
+            let stillUrl = giphy[i].images.original_still.url
+            let animateUrl = giphy[i].images.original.url
             let imageDiv = $("<div>")
+            imageDiv.addClass = ("col-md-4")
             let p = $("<p>").text("Rating: " + imageRating)
             let cartoonImage = $("<img>")
             cartoonImage.attr("src", imageUrl)
             cartoonImage.attr("data-still", stillUrl)
             cartoonImage.attr("data-animate", animateUrl)
             cartoonImage.attr("data-state", "still")
+            cartoonImage.addClass("gif").addClass("img-fluid")
             cartoonImage.attr("alt", "cartoon image")
             imageDiv.append(p);
             imageDiv.append(cartoonImage)
             $(".image-container").prepend(imageDiv)
         }
 
+        $(".gif").on("click", function () {
+            let state = $(this).attr("data-state")
+            if (state === "still") {
+                $(this).attr("src", $(this).attr("data-animate"))
+                $(this).attr("data-state", "animate")
+            } else {
+                $(this).attr("src", $(this).attr("data-still"))
+                $(this).attr("data-state", "still")
+            }
+        })
+
     });
+
+
 }
+
+
+
 
 function renderButtons() {
 
