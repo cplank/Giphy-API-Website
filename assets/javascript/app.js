@@ -16,9 +16,9 @@ function showCartoons() {
             let imageUrl = giphy[i].images.original_still.url
             let stillUrl = giphy[i].images.original_still.url
             let animateUrl = giphy[i].images.original.url
-            let imageDiv = $("<div>")
-            imageDiv.addClass = ("col-md-4")
-            let p = $("<p>").text("Rating: " + imageRating)
+            // let imageDiv = $("<div>")
+            // imageDiv.addClass = ("col-md-4")
+            let p = $("<p>").text("Rating: " + imageRating.toUpperCase())
             let cartoonImage = $("<img>")
             cartoonImage.attr("src", imageUrl)
             cartoonImage.attr("data-still", stillUrl)
@@ -26,9 +26,12 @@ function showCartoons() {
             cartoonImage.attr("data-state", "still")
             cartoonImage.addClass("gif").addClass("img-fluid")
             cartoonImage.attr("alt", "cartoon image")
-            imageDiv.append(p);
-            imageDiv.append(cartoonImage)
-            $(".image-container").prepend(imageDiv)
+            // imageDiv.append(p);
+            // imageDiv.append(cartoonImage)
+            // $(".image-container").append(p)
+            cartoonImage.append(p)
+            $(".image-container").prepend(cartoonImage)
+
         }
 
         $(".gif").on("click", function () {
